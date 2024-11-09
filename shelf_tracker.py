@@ -15,7 +15,7 @@ class Book:
         self.updates = []  # Stores each progress update as {"date": date, "pages_read": pages}
 
     def update_progress(self, page):
-        """Updates the pages read for this book, if valid."""
+        """Update the pages read for this book, if valid."""
         if page <= self.total_pages:
             self.pages_read = page
             self.updates.append({"date": str(datetime.now().date()), "pages_read": page - self.pages_read})
@@ -24,12 +24,12 @@ class Book:
             print(f"Error: Total pages read cannot exceed {self.total_pages}.")
 
     def get_progress(self):
-        """Calculates and returns the progress percentage for this book."""
+        """Calculate and return the progress percentage for this book."""
         progress = int((self.pages_read / self.total_pages) * 100)
         return f"{self.title} - {self.author}: {self.pages_read}/{self.total_pages} pages ({progress}%)."
 
     def to_dict(self):
-        """Converts the book object to a dictionary format for easy JSON serialization."""
+        """Convert the book object to a dictionary format for easy JSON serialization."""
         return {
             "title": self.title,
             "author": self.author,
@@ -41,7 +41,7 @@ class Book:
 
     @classmethod
     def from_dict(cls, data):
-        """Creates a Book instance from a dictionary (used when loading from JSON)."""
+        """Create a Book instance from a dictionary (used when loading from JSON)."""
         book = cls(data["title"], data["author"], data["total_pages"])
         book.pages_read = data["pages_read"]
         book.start_date = data["start_date"]
@@ -55,6 +55,7 @@ class ShelfTracker:
         self.books = self.load_books()
 
     def load_books(self):
+        """Load books objects from JSON file."""
         try:
             with open(self.filename, 'r') as f:
                 book_data = json.load(f)
@@ -63,6 +64,7 @@ class ShelfTracker:
             return {}
 
     def save_books(self):
+        """Convert books to dictionary objects and save to JSON file."""
         try:
             with open(self.filename, 'w') as f:
                 json.dump({title: book.to_dict() for title, book in self.books.items()}, f)
@@ -70,6 +72,7 @@ class ShelfTracker:
             return []
 
     def add_book(self, title, author, total_pages):
+        """Add book to shelf."""
         if title in self.books:
             print(f"{title} is already in your bookshelf.")
         else:
@@ -78,6 +81,7 @@ class ShelfTracker:
             self.save_books()
 
     def update_book_progress(self, title, page):
+        """Update pages read for a book."""
         if title in self.books:
             self.books[title].update_progress(page)
             self.save_books()
@@ -86,10 +90,15 @@ class ShelfTracker:
             print(f"{title} is not in your bookshelf.")
 
     def list_books(self):
+        """Print out all books in your shelf."""
         if self.books:
             for book in self.books.values():
                 print(book.get_progress())
         else:
             print("No books yet.")
 
+# TODO: ADD TIMELINE FOR EACH BOOK
+# TODO: IMPLEMENT DELETE FEATURE FOR BOOKS
+# TODO: IMPLEMENT RECOMMENDATION FEATURE
+# TODO: CREATE GUI
 
