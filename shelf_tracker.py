@@ -5,6 +5,8 @@ from datetime import datetime
 from json import JSONDecodeError
 
 
+# TODO: ADD TIMELINE FOR EACH BOOK
+
 class Book:
     def __init__(self, title, author, total_pages):
         self.title = title
@@ -97,7 +99,16 @@ class ShelfTracker:
         else:
             print("No books yet.")
 
-# TODO: ADD TIMELINE FOR EACH BOOK
+    def get_book_timeline(self, title):
+        """Get the progress updates timeline for a specific book."""
+        if title in self.books:
+            updates = self.books[title].updates
+            for update in updates:
+                print(f"{update['date']}: {update['pages_read']} pages read.")
+        else:
+            print(f"{title} is not in your bookshelf.")
+
+
 # TODO: IMPLEMENT DELETE FEATURE FOR BOOKS
 # TODO: IMPLEMENT RECOMMENDATION FEATURE
 # TODO: CREATE GUI
