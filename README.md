@@ -21,8 +21,7 @@ A command-line application for tracking reading progress across multiple books. 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/ReadingProgressTracker.git
-    cd ReadingProgressTracker
+    git clone https://github.com/drewsawicki/MyShelf.git
     ```
    
 2. Navigate to the project directory:
