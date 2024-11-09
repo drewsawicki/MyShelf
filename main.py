@@ -22,6 +22,10 @@ update_progress_parser.add_argument("--page", required=True, help="Current page 
 # Subparser for listing books
 list_parser = subparsers.add_parser("list", help="List all books and their progress")
 
+# Subparser for displaying book details
+book_details_parser = subparsers.add_parser("details", help="Get details about a book")
+book_details_parser.add_argument("--title", required=True, help="Title of the book")
+
 args = parser.parse_args()
 if args.command == "add":
     if args.title and args.author and args.pages:
@@ -35,5 +39,10 @@ elif args.command == "update":
         print("Please provide title and current page number for the book.")
 elif args.command == "list":
     tracker.list_books()
+elif args.command == "details":
+    if args.title:
+        tracker.display_book_details(args.title)
+    else:
+        print("Please provide title of the book.")
 else:
     parser.print_help()

@@ -19,8 +19,8 @@ class Book:
     def update_progress(self, page):
         """Update the pages read for this book, if valid."""
         if page <= self.total_pages:
-            self.pages_read = page
             self.updates.append({"date": str(datetime.now().date()), "pages_read": page - self.pages_read})
+            self.pages_read = page
             print(f"Updated '{self.title}' progress to {page} pages.")
         else:
             print(f"Error: Total pages read cannot exceed {self.total_pages}.")
@@ -104,7 +104,20 @@ class ShelfTracker:
         if title in self.books:
             updates = self.books[title].updates
             for update in updates:
-                print(f"{update['date']}: {update['pages_read']} pages read.")
+                print(f"\t{update['date']}: {update['pages_read']} pages read.")
+        else:
+            print(f"{title} is not in your bookshelf.")
+
+    def display_book_details(self, title):
+        if title in self.books:
+            book = self.books[title]
+            print(f"Title: {book.title}")
+            print(f"Author: {book.author}")
+            print(f"Total Pages: {book.total_pages}")
+            print(f"Pages Read: {book.pages_read}")
+            print(f"Start Date: {book.start_date}")
+            print("Timeline:")
+            self.get_book_timeline(title)
         else:
             print(f"{title} is not in your bookshelf.")
 
