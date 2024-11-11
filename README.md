@@ -14,7 +14,6 @@ A command-line application for tracking reading progress across multiple books. 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-- [Project Structure](#project-structure)
 - [Contributing](#contributing)
 
 ## Installation
