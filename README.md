@@ -44,10 +44,11 @@ The Reading Progress Tracker is controlled via command-line arguments. Use the f
 ## Modes
 * `add`: Add a new book.
 * `update`: Update reading progress for an existing book.
-* `show`: Display the list of books with reading stats.
+* `list`: Display the list of books with progression stats.
+* `details`: Display details of one book.
 
 ## Command-Line Arguments
-* `--mode <add|update|show>`: Specify the operation to perform.
+* `--mode <add|update|list|details>`: Specify the operation to perform.
 * `--title <book_title>`: Title of the book.
 * `--author <author>`: (Optional) Author of the book.
 * `--pages <total_pages>`: (Optional) Total number of pages in the book.
