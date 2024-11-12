@@ -46,42 +46,42 @@ The **Reading Progress Tracker** is controlled via command-line arguments. Below
 
 ### Available Modes:
 1. **Add a Book**
-  - Adds a new book to your reading list.
-  - **Required Arguments**:
-    - `--title <book_title>`: The title of the book.
-  - **Optional Arguments**:
-    - `--author <book_author>`: Author of the book (for api accuracy).
-  - Example:
-    ```bash
-    python main.py add --title "The Great Gatsby" --author "F. Scott Fitzgerald"
-    ```
+   - Adds a new book to your reading list.
+   - **Required Arguments**:
+     - `--title <book_title>`: The title of the book.
+   - **Optional Arguments**:
+     - `--author <book_author>`: Author of the book (for api accuracy).
+   - Example:
+     ```bash
+     python main.py add --title "The Great Gatsby" --author "F. Scott Fitzgerald"
+     ```
 
 2. **Update Progress**
-  - Updates the current page number of an existing book.
-  - **Required Arguments**:
-    - `--title <book_title>`: The title of the book to update.
-    - `--page <current_page>`: The page number the user is currently on.
-  - Example:
-    ```bash
-    python main.py update --title "The Great Gatsby" --page 75
-    ```
+   - Updates the current page number of an existing book.
+   - **Required Arguments**:
+     - `--title <book_title>`: The title of the book to update.
+     - `--page <current_page>`: The page number the user is currently on.
+   - Example:
+     ```bash
+     python main.py update --title "The Great Gatsby" --page 75
+     ```
 
 3. **List Books**
-  - Lists all books in your reading list.
-  - **No Arguments** required.
-  - Example:
-    ```bash
-    python main.py list
-    ```
+   - Lists all books in your reading list.
+   - **No Arguments** required.
+   - Example:
+     ```bash
+     python main.py list
+     ```
 
 4. **Show Book Details**
-  - Displays detailed information about a specific book.
-  - **Required Arguments**:
-    - `--title <book_title>`: The title of the book.
-  - Example:
-    ```bash
-    python main.py details --title "The Great Gatsby"
-    ```
+   - Displays detailed information about a specific book.
+   - **Required Arguments**:
+     - `--title <book_title>`: The title of the book.
+   - Example:
+     ```bash
+     python main.py details --title "The Great Gatsby"
+     ```
 
 ## Contributing
 Feel free to submit a pull request if you have suggestions, bug fixes, or additional features to add. All contributions are welcome!
