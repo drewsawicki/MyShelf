@@ -13,7 +13,6 @@ A command-line application for tracking reading progress across multiple books. 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Examples](#examples)
 - [Contributing](#contributing)
 
 ## Installation
@@ -34,24 +33,55 @@ A command-line application for tracking reading progress across multiple books. 
     ```
 
 ## Usage
-The Reading Progress Tracker is controlled via command-line arguments. Use the following syntax to interact with the application:
 
+The **Reading Progress Tracker** is controlled via command-line arguments. Below are the commands for each mode:
+
+### General Syntax:
    ```bash
-   python main.py --mode <mode> --title <book_title> [--author <author>] [--pages <total_pages>] --page <current_page>
+   python main.py <mode> [<arguments>]
    ```
 
-## Modes
-* `add`: Add a new book.
-* `update`: Update reading progress for an existing book.
-* `list`: Display the list of books with progression stats.
-* `details`: Display details of one book.
+The **Reading Progress Tracker** is controlled via command-line arguments. Below are the commands for each mode:
 
-## Command-Line Arguments
-* `--mode <add|update|list|details>`: Specify the operation to perform.
-* `--title <book_title>`: Title of the book.
-* `--author <author>`: (Optional) Author of the book.
-* `--pages <total_pages>`: (Optional) Total number of pages in the book.
-* `--page <current_page>`: Pages read for progress update.
+
+### Available Modes:
+- **Add a Book**
+  - Adds a new book to your reading list.
+  - **Required Arguments**:
+    - `--title <book_title>`: The title of the book.
+  - **Optional Arguments**:
+    - `--author <book_author>`: Author of the book (for api accuracy).
+  - Example:
+    ```bash
+    python main.py add --title "The Great Gatsby" --author "F. Scott Fitzgerald"
+    ```
+
+- **Update Progress**
+  - Updates the current page number of an existing book.
+  - **Required Arguments**:
+    - `--title <book_title>`: The title of the book to update.
+    - `--page <current_page>`: The page number the user is currently on.
+  - Example:
+    ```bash
+    python main.py update --title "The Great Gatsby" --page 75
+    ```
+
+- **List Books**
+  - Lists all books in your reading list.
+  - **No Arguments** required.
+  - Example:
+    ```bash
+    python main.py list
+    ```
+
+- **Show Book Details**
+  - Displays detailed information about a specific book.
+  - **Required Arguments**:
+    - `--title <book_title>`: The title of the book.
+  - Example:
+    ```bash
+    python main.py details --title "The Great Gatsby"
+    ```
 
 ## Contributing
 Feel free to submit a pull request if you have suggestions, bug fixes, or additional features to add. All contributions are welcome!
