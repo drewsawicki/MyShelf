@@ -45,7 +45,7 @@ The **Reading Progress Tracker** is controlled via command-line arguments. Below
 
 
 ### Available Modes:
-- **Add a Book**
+1. **Add a Book**
   - Adds a new book to your reading list.
   - **Required Arguments**:
     - `--title <book_title>`: The title of the book.
@@ -56,7 +56,7 @@ The **Reading Progress Tracker** is controlled via command-line arguments. Below
     python main.py add --title "The Great Gatsby" --author "F. Scott Fitzgerald"
     ```
 
-- **Update Progress**
+2. **Update Progress**
   - Updates the current page number of an existing book.
   - **Required Arguments**:
     - `--title <book_title>`: The title of the book to update.
@@ -66,7 +66,7 @@ The **Reading Progress Tracker** is controlled via command-line arguments. Below
     python main.py update --title "The Great Gatsby" --page 75
     ```
 
-- **List Books**
+3. **List Books**
   - Lists all books in your reading list.
   - **No Arguments** required.
   - Example:
@@ -74,7 +74,7 @@ The **Reading Progress Tracker** is controlled via command-line arguments. Below
     python main.py list
     ```
 
-- **Show Book Details**
+4. **Show Book Details**
   - Displays detailed information about a specific book.
   - **Required Arguments**:
     - `--title <book_title>`: The title of the book.
