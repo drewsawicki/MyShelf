@@ -136,6 +136,13 @@ class ShelfTracker:
         else:
             print(f"{title} is not in your bookshelf.")
 
+    def delete_book(self, title):
+        """Delete a book."""
+        if title in self.books:
+            del self.books[title]
+        else:
+            print(f"{title} is not in your bookshelf.")
+
 
 # TODO: IMPLEMENT DELETE FEATURE FOR BOOKS
 # TODO: IMPLEMENT RECOMMENDATION FEATURE
