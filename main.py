@@ -25,6 +25,10 @@ list_parser = subparsers.add_parser("list", help="List all books and their progr
 book_details_parser = subparsers.add_parser("details", help="Get details about a book")
 book_details_parser.add_argument("--title", required=True, help="Title of the book")
 
+# Subparser for deleting book
+book_delete_parser = subparsers.add_parser("delete", help="Delete a book")
+book_delete_parser.add_argument("--title", required=True, help="Title of the book")
+
 args = parser.parse_args()
 if args.command == "add":
     if args.title:
@@ -41,6 +45,11 @@ elif args.command == "list":
 elif args.command == "details":
     if args.title:
         tracker.display_book_details(args.title)
+    else:
+        print("Title of the book is required.")
+elif args.command == "delete":
+    if args.title:
+        tracker.delete_book(args.title)
     else:
         print("Title of the book is required.")
 else:
