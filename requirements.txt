@@ -1,3 +1,4 @@
 # Optional libraries (for future enhancements)
 pandas==2.0.3     # Data handling, optional for advanced tracking
 matplotlib==3.8.0 # Visualization for reading progress, optional
+requests

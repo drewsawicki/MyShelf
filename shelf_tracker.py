@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+from utils import fetch_book_info
 
 from datetime import datetime
 from json import JSONDecodeError
@@ -8,10 +9,11 @@ from json import JSONDecodeError
 # TODO: ADD TIMELINE FOR EACH BOOK
 
 class Book:
-    def __init__(self, title, author, total_pages):
+    def __init__(self, title, author, total_pages, genre):
         self.title = title
         self.author = author
         self.total_pages = total_pages
+        self.genre = genre
         self.pages_read = 0
         self.start_date = str(datetime.now().date())
         self.updates = []  # Stores each progress update as {"date": date, "pages_read": pages}
@@ -35,6 +37,7 @@ class Book:
         return {
             "title": self.title,
             "author": self.author,
+            "genre": self.genre,
             "total_pages": self.total_pages,
             "pages_read": self.pages_read,
             "start_date": self.start_date,
@@ -44,7 +47,7 @@ class Book:
     @classmethod
     def from_dict(cls, data):
         """Create a Book instance from a dictionary (used when loading from JSON)."""
-        book = cls(data["title"], data["author"], data["total_pages"])
+        book = cls(data["title"], data["author"], data["total_pages"], data["genre"])
         book.pages_read = data["pages_read"]
         book.start_date = data["start_date"]
         book.updates = data["updates"]
@@ -73,14 +76,25 @@ class ShelfTracker:
         except FileNotFoundError:
             return []
 
-    def add_book(self, title, author, total_pages):
+    def add_book(self, title, author=None):
         """Add book to shelf."""
         if title in self.books:
             print(f"{title} is already in your bookshelf.")
         else:
-            self.books[title] = Book(title, author, total_pages)
-            print(f"Added '{title}' by {author} to your shelf.")
-            self.save_books()
+            book_info = fetch_book_info(title, author)
+            if book_info:
+                new_book = Book(
+                    title=book_info["title"],
+                    author=book_info["author"],
+                    total_pages=book_info["total_pages"],
+                    genre=book_info["genre"]
+                )
+
+                self.books[title] = new_book
+                print(f"Added '{title}' by {book_info['author']} to your shelf.")
+                self.save_books()
+            else:
+                print("Failed to retrieve book information.")
 
     def update_book_progress(self, title, page):
         """Update pages read for a book."""
@@ -116,6 +130,7 @@ class ShelfTracker:
             print(f"Total Pages: {book.total_pages}")
             print(f"Pages Read: {book.pages_read}")
             print(f"Start Date: {book.start_date}")
+            print(f"Genre: {book.genre}")
             print("Timeline:")
             self.get_book_timeline(title)
         else:
